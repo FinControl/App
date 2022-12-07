@@ -4,7 +4,6 @@ import {StyleSheet, Text, TextInput, TouchableOpacity, View, Image, KeyboardAvoi
 import styleLogin from '../styles/styleLogin'
 import * as Animatable from "react-native-animatable"
 import * as COLORS from '../styles/cores.json';
-import axios from 'axios'
 
 const Dados = () => {
 
