@@ -211,7 +211,7 @@ export default function Finances() {
           Receitas:
         </Text>
         <Text style={{fontSize: 20, fontWeight: '500', color: COLORS.GRAY_100}}>
-          R$ { vtReceitas }
+          R$ { vtReceitas.toFixed(2) }
         </Text>
         </View>
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -219,7 +219,7 @@ export default function Finances() {
           Despesas:
         </Text>
         <Text style={{fontSize: 20, fontWeight: '500', color: COLORS.GRAY_100}}>
-          -R$ { vtDespesas }
+          -R$ { vtDespesas.toFixed(2) }
         </Text>
         </View>
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -262,7 +262,7 @@ export default function Finances() {
                   Descrição: {item.Descricao}
               </Text>
               <Text style={{color: COLORS.GRAY_100}}>
-                  {(item.Tipo == "R") ? "R$ " + item.Valor : "-R$ " + item.Valor}
+                  {(item.Tipo == "R") ? "R$ " + (item.Valor).toFixed(2) : "-R$ " + (item.Valor).toFixed(2)}
               </Text>
           </View>
       </View>

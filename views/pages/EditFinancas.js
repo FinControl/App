@@ -67,6 +67,23 @@ const Form = () => {
     }
     };
 
+    const editFinanca = () => {
+      const uri = "http://192.168.0.12:3301/editF";
+      axios({
+        method: 'post',
+        url: uri,
+        data:{
+          valor: valor,
+          idFinanca: route.params.idFinanca
+        }
+      })
+      .then(res=>{console.log(res)})
+      .catch(err=>{console.log(err)});
+      setMsg("Editado com sucesso.")
+      api();
+      api();
+    }
+
     const excluirFinanca = () => {
       const uri = "http://192.168.0.12:3301/delete";
       axios({
@@ -148,7 +165,7 @@ const Form = () => {
         maxLength={10}
         style={style.input}
         value= {valor.toString()}
-        onChangeText={ () => { }}
+        onChangeText={ (value) => {setValor(value)}}
         />
         <Text style={style.label}>
           Data
@@ -193,7 +210,7 @@ const Form = () => {
         placeholder="Categorias"
         />
         <TouchableOpacity
-        onPress={() => {}}
+        onPress={() => {editFinanca()}}
         style={style.button}>
           <Text style={{color: COLORS.GRAY_800, fontWeight: 'bold'}}>Salvar</Text>
         </TouchableOpacity>

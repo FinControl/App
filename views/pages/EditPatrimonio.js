@@ -51,19 +51,7 @@ const Form = () => {
     const route = useRoute();
     const navigation = useNavigation();  
 
-    const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate;
-    setShow(false);
-    setDate(currentDate);
-    };
 
-    const showDatepicker = () => {
-    if (show == false) { 
-      setShow(true)
-    } else {
-      setShow(false)
-    }
-    };
 
     const excluirFinanca = () => {
       const uri = "http://192.168.0.12:3301/deleteP";
@@ -86,13 +74,30 @@ const Form = () => {
       navigation.goBack();
     }
 
+    const editPatrimonio = () => {
+      const uri = "http://192.168.0.12:3301/editP";
+      axios({
+        method: 'post',
+        url: uri,
+        data:{
+          valor: valor,
+          idPatrimonio: route.params.idPatrimonio
+        }
+      })
+      .then(res=>{console.log(res)})
+      .catch(err=>{console.log(err)});
+      setMsg("Editado com sucesso.")
+      api();
+      api();
+    }
+
     const api = () => {
-      const uri = "http://192.168.0.12:3301/edit";
+      const uri = "http://192.168.0.12:3301/listP";
       axios({
           method: 'post',
           url: uri,
           data:{
-              idFinanca: route.params.idFinanca
+            idPatrimonio: route.params.idPatrimonio
           }
       })
       .then(res=>{
@@ -113,7 +118,7 @@ const Form = () => {
 
     useEffect(()=>{
       api();
-    }, [categorias, open])
+    }, [])
 
     const reload = () => {
       api();
@@ -123,7 +128,7 @@ const Form = () => {
       <View style={{width: '100%', alignItems:'center'}}>
         <View style={{alignItems: 'center', marginBottom: 12, marginTop: 12}}>
         <Text style={{color: COLORS.GRAY_100, fontSize: 24}}>
-          Editar finança
+          Editar patrimonio
         </Text>
         <TouchableOpacity 
         onPress={() => { reload(); }}
@@ -146,7 +151,7 @@ const Form = () => {
         maxLength={10}
         style={style.input}
         value= {valor.toString()}
-        onChangeText={ () => { }}
+        onChangeText={ (value) => {setValor(value)}}
         />
         <Text style={style.label}>
           Data
@@ -191,7 +196,7 @@ const Form = () => {
         placeholder="Categorias"
         />
         <TouchableOpacity
-        onPress={() => {}}
+        onPress={() => {editPatrimonio();}}
         style={style.button}>
           <Text style={{color: COLORS.GRAY_800, fontWeight: 'bold'}}>Salvar</Text>
         </TouchableOpacity>

@@ -120,7 +120,7 @@ export default function Patrimonio() {
           Bens:
         </Text>
         <Text style={{fontSize: 20, fontWeight: '500', color: COLORS.GRAY_100}}>
-          R$ {bens}
+          R$ {bens.toFixed(2)}
         </Text>
         </View>
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -128,7 +128,7 @@ export default function Patrimonio() {
           Dívidas:
         </Text>
         <Text style={{fontSize: 20, fontWeight: '500', color: COLORS.GRAY_100}}>
-          -R$ {dividas}
+          -R$ {dividas.toFixed(2)}
         </Text>
         </View>
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -136,7 +136,7 @@ export default function Patrimonio() {
           Patrimônio líquido:
         </Text>
         <Text style={{fontSize: 20, fontWeight: '500', color: COLORS.GRAY_100}}>
-        {(pl > 0) ? "R$ " + pl : "-R$ " + pl*(-1)}
+        {(pl > 0) ? "R$ " + pl.toFixed(2) : "-R$ " + (pl*(-1)).toFixed(2)}
         </Text>
         </View>
         </TouchableOpacity>

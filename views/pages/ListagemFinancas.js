@@ -48,7 +48,7 @@ const Listagem = () => {
                     Descrição: {item.Descricao}
                 </Text>
                 <Text style={{color: COLORS.GRAY_100}}>
-                    R${item.Valor}
+                    R${(item.Valor).toFixed(2)}
                 </Text>
             </TouchableOpacity>
         </View>

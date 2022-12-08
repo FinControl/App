@@ -14,7 +14,8 @@ export default function Dashboard() {
     var vtLazer = 0, vtEducacao = 0, vtCompras = 0,
     vtAssinatura = 0, vtAlimento = 0, vtOutrasDespesas = 0;
     var vtVeiculo = 0, vtImovel = 0, vtAplicacao = 0,
-    vtOutrosBens = 0, vtFinanciamento = 0, vtOutrasDividas = 0;
+    vtOutrosBens = 0, vtFinanciamento = 0, vtOutrasDividas = 0,
+    vtCompras=0, vtCartao=0;
 
     const mesAtual = new Date().toLocaleString(
       'pt-BR', {month: 'long'}
@@ -212,7 +213,7 @@ export default function Dashboard() {
               "id": 11,
               "value": vtAssinatura,
               "label": "Assinatura",
-              "color": "#FFEE63"
+              "color": "#F78812"
             };
           } 
           if (dados[i].Categoria == "alimento") {
@@ -258,6 +259,8 @@ export default function Dashboard() {
       var veiculo = {};
       var imovel = {};
       var aplicacao = {};
+      var cartao = {};
+      var compras = {};
       var financiamento = {};
       var outros_bens = {};
       var outras_dividas = {};
@@ -302,7 +305,7 @@ export default function Dashboard() {
                 "id": 3,
                 "value": vtAplicacao,
                 "label": "Aplicação",
-                "color": "#D4D925"
+                "color": "#FFCE45"
               };
             } 
             if (dados[i].Categoria == "outros_bens") {
@@ -311,14 +314,14 @@ export default function Dashboard() {
                 "id": 4,
                 "value": vtOutrosBens,
                 "label": "Outros bens",
-                "color": "#FFEE63"
+                "color": "#D4AC2B"
               };
             }
         } else if (valueTipo =="dividas") {
           if (dados[i].Categoria == "financiamento") {
             vtFinanciamento = vtFinanciamento + dados[i].Valor;
             financiamento = {
-              "id": 8,
+              "id": 7,
               "value": vtFinanciamento,
               "label": "Financiamento",
               "color": "#990000"
@@ -330,7 +333,25 @@ export default function Dashboard() {
               "id": 8,
               "value": vtOutrasDividas,
               "label": "Outras dívidas",
-              "color": "#990000"
+              "color": "#FF5B00"
+            };
+          }
+          if (dados[i].Categoria == "cartao") {
+            vtCartao = vtCartao + dados[i].Valor;
+            cartao = {
+              "id": 9,
+              "value": vtCartao,
+              "label": "Cartão",
+              "color": "#FFCE45"
+            };
+          }
+          if (dados[i].Categoria == "compras") {
+            vtCompras = vtCompras + dados[i].Valor;
+            compras = {
+              "id": 10,
+              "value": vtCompras,
+              "label": "Compras",
+              "color": "#D4AC2B"
             };
           }
         }
@@ -341,6 +362,8 @@ export default function Dashboard() {
         if (Object.keys(outros_bens).length > 0) arrayDados.push(outros_bens);
         if (Object.keys(financiamento).length > 0) arrayDados.push(financiamento);
         if (Object.keys(outras_dividas).length > 0) arrayDados.push(outras_dividas);
+        if (Object.keys(compras).length > 0) arrayDados.push(compras);
+        if (Object.keys(cartao).length > 0) arrayDados.push(cartao);
         setDadosGrafico(arrayDados);
         console.log(arrayDados);
       })

@@ -334,6 +334,30 @@ app.post("/edit", (req,res)=>{
     });
 });
 
+app.post("/editF", (req,res)=>{
+    const query = `update finança set Valor = ${req.body.valor} where idFinança = ${req.body.idFinanca}`;
+    db.query(query,(err, results)=>{
+        console.log(query);
+        res.send("Ok");
+    });
+});
+
+app.post("/listP", (req,res)=>{
+    const query = `select * from patrimonio where idPatrimonio = ${req.body.idPatrimonio}`;
+    db.query(query,(err, results)=>{
+        console.log(results);
+        res.send(results);
+    });
+});
+
+app.post("/editP", (req,res)=>{
+    const query = `update patrimonio set Valor = ${req.body.valor} where idPatrimonio = ${req.body.idPatrimonio}`;
+    db.query(query,(err, results)=>{
+        console.log(query);
+        res.send("Ok");
+    });
+});
+
 app.post("/extrato", (req,res)=>{
     var dataFim = req.body.dataFim;
     var data = req.body.data;

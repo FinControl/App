@@ -95,7 +95,11 @@ const LoginScreen = ({navigation}) => {
       style={styleLogin.container}
     >
       <View style={{justifyContent:'center', alignItems: 'center', marginBottom: 24}}>
-        <Text style={styleLogin.textoPrincipal}> FinControl </Text>
+        <Text style={{
+        fontWeight: "bold",
+        fontSize: 32,
+        color: COLORS.PRIMARY_COLOR,
+        marginBottom: 8}}> Fin<Text style={{color: COLORS.GRAY_100}}>Control</Text> </Text>
         <Text style={{color:"#e1e1e6", fontSize: 18, fontWeight: 'bold'}}>Faça seu login e comece agora!</Text>
       </View>
         <Text style={{marginBottom: 8, color: COLORS.GRAY_100}}>{msg}</Text>
